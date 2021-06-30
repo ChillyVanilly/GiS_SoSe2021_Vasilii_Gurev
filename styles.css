@@ -1,0 +1,22 @@
+body {
+  background-color: black;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 15px 2px;
+  padding: 0px 20px;
+  margin: 0;
+}
+
+.memory-element {
+  width: 50px;
+  height: 50px;
+  border-style: solid;
+  border-radius: 14%;
+  border-color: rgb(162, 162, 162);
+}
