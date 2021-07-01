@@ -9,6 +9,7 @@ var Memory;
     let maxTotalIndex = width * height;
     //generieren des layouts
     let memoryContainer;
+    //hallomeinnameistjohannes
     let maxShuffleAmount = 100;
     let shuffleAmount = 0;
     //wie oft gemischt wird
@@ -21,7 +22,7 @@ var Memory;
     async function connectdatabase() {
         let response = await fetch(url + "?" + "getOrder=yes");
         let responseText = await response.text();
-        let pretty = responseText.replace(/\|[|{|}|"|_id|savePicture|]/g, "");
+        let pretty = responseText.replace(/\\|\[|{|}|"|_id|savePicture|]/g, "");
         console.log(pretty);
     }
     function init(_event) {

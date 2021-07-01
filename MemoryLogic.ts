@@ -12,6 +12,7 @@ namespace Memory {
   //generieren des layouts
 
   let memoryContainer: HTMLDivElement;
+  //hallomeinnameistjohannes
 
   let maxShuffleAmount: number = 100;
   let shuffleAmount: number = 0;
@@ -29,7 +30,7 @@ namespace Memory {
   async function connectdatabase(): Promise<void> {
     let response: Response = await fetch(url + "?" + "getOrder=yes");
     let responseText: string = await response.text();
-    let pretty: string = responseText.replace(/\|[|{|}|"|_id|savePicture|]/g, "");
+    let pretty: string = responseText.replace(/\\|\[|{|}|"|_id|savePicture|]/g, "");
     console.log(pretty);
   }
 
