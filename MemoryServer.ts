@@ -14,7 +14,7 @@ export namespace Datenbankanbindung {
         port = 5001;
     }
 
-    let databaseUrl: string = "mongodb+srv://VasjiderBoss:VasjiderBoss@gisgoodvibes.cvlu9.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+    let databaseUrl: string = "mongodb+srv://VasjiderBoss:shishaistgeil@gisgoodvibes.cvlu9.mongodb.net/VasisDatabase?retryWrites=true&w=majority";
 
 
     startServer(port);

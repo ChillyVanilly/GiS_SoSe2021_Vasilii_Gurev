@@ -12,7 +12,7 @@ var Datenbankanbindung;
     if (port == undefined) {
         port = 5001;
     }
-    let databaseUrl = "mongodb+srv://VasjiderBoss:VasjiderBoss@gisgoodvibes.cvlu9.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+    let databaseUrl = "mongodb+srv://VasjiderBoss:shishaistgeil@gisgoodvibes.cvlu9.mongodb.net/VasisDatabase?retryWrites=true&w=majority";
     startServer(port);
     connectToDatabase(databaseUrl);
     function startServer(_port) {

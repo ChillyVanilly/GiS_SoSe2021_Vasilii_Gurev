@@ -1,0 +1,10 @@
+2021-07-01T16:21:27.000875+00:00 app[web.1]:     at MessageStream._write (/app/node_modules/mongodb/lib/cmap/message_stream.js:42:5)
+2021-07-01T16:21:27.000876+00:00 app[web.1]:     at writeOrBuffer (internal/streams/writable.js:358:12)
+2021-07-01T16:21:27.000877+00:00 app[web.1]:     at MessageStream.Writable.write (internal/streams/writable.js:303:10)
+2021-07-01T16:21:27.000878+00:00 app[web.1]:     at TLSSocket.ondata (internal/streams/readable.js:726:22)
+2021-07-01T16:21:27.000878+00:00 app[web.1]:     at TLSSocket.emit (events.js:375:28)
+2021-07-01T16:21:27.000878+00:00 app[web.1]:     at addChunk (internal/streams/readable.js:290:12)
+2021-07-01T16:21:27.000879+00:00 app[web.1]:     at readableAddChunk (internal/streams/readable.js:265:9)
+2021-07-01T16:21:27.000879+00:00 app[web.1]: (Use `node --trace-warnings ...` to show where the warning was created)
+2021-07-01T16:21:27.001096+00:00 app[web.1]: (node:23) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 1)
+2021-07-01T16:21:27.001246+00:00 app[web.1]: (node:23) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
