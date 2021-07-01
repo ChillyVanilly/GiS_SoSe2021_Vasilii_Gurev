@@ -2,29 +2,35 @@ var Memory;
 (function (Memory) {
     window.addEventListener("load", init);
     //width darf nicht ungerade sein. Man müsste dafür zusätzlichen code schreiben, der das überschüssige Element in eine neuee Zeile schreibt
-    var width = 10;
-    var height = 10;
+    let width = 10;
+    let height = 10;
+    let url = "https://vasilii-server.herokuapp.com/";
     //anzahl der memorys generiert
-    var maxTotalIndex = width * height;
+    let maxTotalIndex = width * height;
     //generieren des layouts
-    var memoryContainer;
-    var maxShuffleAmount = 100;
-    var shuffleAmount = 0;
+    let memoryContainer;
+    let maxShuffleAmount = 100;
+    let shuffleAmount = 0;
     //wie oft gemischt wird
-    var maxFramesShowSolution = 200;
+    let maxFramesShowSolution = 200;
     //wie lang zeit zum merken
-    var framesSinceSolutionShow = 0;
-    var covered;
-    var firstUncovered;
-    var secondUncovered;
+    let framesSinceSolutionShow = 0;
+    let covered;
+    let firstUncovered;
+    let secondUncovered;
+    async function connectdatabase() {
+        let response = await fetch(url + "?" + "getOrder=yes");
+        let responseText = await response.text();
+        console.log(responseText);
+    }
     function init(_event) {
         memoryContainer = document.querySelector(".memory-container");
         //sucht element mit der Klasse memory-container
-        var totalIndex = 0;
-        for (var rowIndex = 0; rowIndex < height; rowIndex++) {
-            var newRow = document.createElement("div");
+        let totalIndex = 0;
+        for (let rowIndex = 0; rowIndex < height; rowIndex++) {
+            let newRow = document.createElement("div");
             newRow.setAttribute("class", "row");
-            for (var elementIndex = 0; elementIndex < width / 2; elementIndex++) {
+            for (let elementIndex = 0; elementIndex < width / 2; elementIndex++) {
                 generateElement(totalIndex, maxTotalIndex, newRow);
                 generateElement(totalIndex, maxTotalIndex, newRow);
                 totalIndex++;
@@ -32,6 +38,7 @@ var Memory;
             memoryContainer.appendChild(newRow);
         }
         animate();
+        connectdatabase();
     }
     function animate() {
         if (!covered) {
@@ -40,10 +47,10 @@ var Memory;
         requestAnimationFrame(animate);
     }
     function cover() {
-        for (var rowIndex = 0; rowIndex < memoryContainer.childElementCount; rowIndex++) {
-            var currentRow = memoryContainer.children[rowIndex];
-            for (var rowIndex_1 = 0; rowIndex_1 < memoryContainer.childElementCount; rowIndex_1++) {
-                var currentElement = currentRow.children[rowIndex_1];
+        for (let rowIndex = 0; rowIndex < memoryContainer.childElementCount; rowIndex++) {
+            let currentRow = memoryContainer.children[rowIndex];
+            for (let rowIndex = 0; rowIndex < memoryContainer.childElementCount; rowIndex++) {
+                let currentElement = currentRow.children[rowIndex];
                 currentElement.style.backgroundColor = "gray";
                 currentElement.setAttribute("coverStatus", "covered");
             }
@@ -63,33 +70,33 @@ var Memory;
         }
     }
     function shuffle() {
-        var randomFirstIndex = Math.floor(Math.random() * maxTotalIndex);
-        var randomSecondIndex = Math.floor(Math.random() * maxTotalIndex);
-        var firstElementIndex = randomFirstIndex % width;
-        var firstGridIndex = Math.floor(randomFirstIndex / width);
-        var secondElementIndex = randomSecondIndex % width;
-        var secondGridIndex = Math.floor(randomSecondIndex / width);
-        var firstGrid = memoryContainer.children[firstGridIndex];
-        var firstChild = firstGrid.children[firstElementIndex];
-        var secondGrid = memoryContainer.children[secondGridIndex];
-        var secondChild = secondGrid.children[secondElementIndex];
-        var firstChildHue = +firstChild.getAttribute("hue");
-        var secondChildHue = +secondChild.getAttribute("hue");
+        let randomFirstIndex = Math.floor(Math.random() * maxTotalIndex);
+        let randomSecondIndex = Math.floor(Math.random() * maxTotalIndex);
+        let firstElementIndex = randomFirstIndex % width;
+        let firstGridIndex = Math.floor(randomFirstIndex / width);
+        let secondElementIndex = randomSecondIndex % width;
+        let secondGridIndex = Math.floor(randomSecondIndex / width);
+        let firstGrid = memoryContainer.children[firstGridIndex];
+        let firstChild = firstGrid.children[firstElementIndex];
+        let secondGrid = memoryContainer.children[secondGridIndex];
+        let secondChild = secondGrid.children[secondElementIndex];
+        let firstChildHue = +firstChild.getAttribute("hue");
+        let secondChildHue = +secondChild.getAttribute("hue");
         firstChild.style.backgroundColor = getHSLString(secondChildHue);
-        firstChild.setAttribute("hue", "" + secondChildHue);
+        firstChild.setAttribute("hue", `${secondChildHue}`);
         secondChild.style.backgroundColor = getHSLString(firstChildHue);
-        secondChild.setAttribute("hue", "" + firstChildHue);
+        secondChild.setAttribute("hue", `${firstChildHue}`);
     }
     function getHSLString(_hue) {
-        return "hsl(" + _hue + ", 100%, 50%)";
+        return `hsl(${_hue}, 100%, 50%)`;
     }
     function generateElement(_totalIndex, _maxTotalIndex, _newRow) {
-        var newElement = document.createElement("div");
+        let newElement = document.createElement("div");
         newElement.setAttribute("class", "memory-element");
-        var factor = (_totalIndex * 2) / _maxTotalIndex;
-        var hue = factor * 360;
-        newElement.style.backgroundColor = "hsl(" + hue + ", 100%, 50%)";
-        newElement.setAttribute("hue", "" + hue);
+        let factor = (_totalIndex * 2) / _maxTotalIndex;
+        let hue = factor * 360;
+        newElement.style.backgroundColor = `hsl(${hue}, 100%, 50%)`;
+        newElement.setAttribute("hue", `${hue}`);
         _newRow.appendChild(newElement);
         newElement.addEventListener("click", onButtonClick.bind(newElement));
     }
@@ -113,7 +120,7 @@ var Memory;
             secondUncovered = null;
             return;
         }
-        this.style.backgroundColor = "hsl(" + this.getAttribute("hue") + ", 100%, 50%)";
+        this.style.backgroundColor = `hsl(${this.getAttribute("hue")}, 100%, 50%)`;
     }
 })(Memory || (Memory = {}));
 //# sourceMappingURL=MemoryLogic.js.map

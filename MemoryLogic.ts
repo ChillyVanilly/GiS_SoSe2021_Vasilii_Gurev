@@ -5,6 +5,8 @@ namespace Memory {
   //width darf nicht ungerade sein. Man müsste dafür zusätzlichen code schreiben, der das überschüssige Element in eine neuee Zeile schreibt
   let width: number = 10;
   let height: number = 10;
+  let url: string = "https://vasilii-server.herokuapp.com/";
+
   //anzahl der memorys generiert
   let maxTotalIndex: number = width * height;
   //generieren des layouts
@@ -24,6 +26,11 @@ namespace Memory {
 
   let firstUncovered: HTMLDivElement;
   let secondUncovered: HTMLDivElement;
+  async function connectdatabase(): Promise<void> {
+    let response: Response = await fetch(url + "?" + "getOrder=yes");
+    let responseText: string = await response.text();
+    console.log(responseText);
+  }
 
   function init(_event: Event): void {
     memoryContainer = <HTMLDivElement>document.querySelector(".memory-container");
@@ -48,6 +55,7 @@ namespace Memory {
       memoryContainer.appendChild(newRow);
     }
     animate();
+    connectdatabase();
   }
 
   function animate(): void {
