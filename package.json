@@ -1,0 +1,25 @@
+{
+  "name": "GiSMemory",
+  "version": "1.0.0",
+  "description": "GiS",
+  "main": "",
+  "dependencies": {
+    "@types/mongodb": "^3.5.20",
+    "@types/node": "^14.0.5",
+    "mongodb": "^3.5.8"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node MemoryServer.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://chillyvanilly.github.io/GiS_SoSe2021_Vasilii_Gurev/"
+  },
+  "author": "Vasilii",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://netflix.com"
+  },
+  "homepage": "https://chillyvanilly.github.io/GiS_SoSe2021_Vasilii_Gurev/index.html"
+}

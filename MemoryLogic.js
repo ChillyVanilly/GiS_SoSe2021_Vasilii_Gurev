@@ -4,17 +4,22 @@ var Memory;
     //width darf nicht ungerade sein. Man müsste dafür zusätzlichen code schreiben, der das überschüssige Element in eine neuee Zeile schreibt
     var width = 10;
     var height = 10;
+    //anzahl der memorys generiert
     var maxTotalIndex = width * height;
+    //generieren des layouts
     var memoryContainer;
     var maxShuffleAmount = 100;
     var shuffleAmount = 0;
+    //wie oft gemischt wird
     var maxFramesShowSolution = 200;
+    //wie lang zeit zum merken
     var framesSinceSolutionShow = 0;
     var covered;
     var firstUncovered;
     var secondUncovered;
     function init(_event) {
         memoryContainer = document.querySelector(".memory-container");
+        //sucht element mit der Klasse memory-container
         var totalIndex = 0;
         for (var rowIndex = 0; rowIndex < height; rowIndex++) {
             var newRow = document.createElement("div");

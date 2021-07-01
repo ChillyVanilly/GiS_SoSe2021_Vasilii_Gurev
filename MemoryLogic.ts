@@ -5,16 +5,21 @@ namespace Memory {
   //width darf nicht ungerade sein. Man müsste dafür zusätzlichen code schreiben, der das überschüssige Element in eine neuee Zeile schreibt
   let width: number = 10;
   let height: number = 10;
+  //anzahl der memorys generiert
   let maxTotalIndex: number = width * height;
+  //generieren des layouts
 
   let memoryContainer: HTMLDivElement;
 
   let maxShuffleAmount: number = 100;
   let shuffleAmount: number = 0;
+  //wie oft gemischt wird
 
   let maxFramesShowSolution: number = 200;
+  //wie lang zeit zum merken
 
   let framesSinceSolutionShow: number = 0;
+
   let covered: boolean;
 
   let firstUncovered: HTMLDivElement;
@@ -22,6 +27,7 @@ namespace Memory {
 
   function init(_event: Event): void {
     memoryContainer = <HTMLDivElement>document.querySelector(".memory-container");
+    //sucht element mit der Klasse memory-container
 
     let totalIndex: number = 0;
 
