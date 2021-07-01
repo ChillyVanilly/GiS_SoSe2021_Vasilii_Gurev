@@ -30,8 +30,10 @@ namespace Memory {
   async function connectdatabase(): Promise<void> {
     let response: Response = await fetch(url + "?" + "getOrder=yes");
     let responseText: string = await response.text();
-    let pretty: string = responseText.replace(/\\|\[|{|}|"|_id|savePicture|]/g, "");
-    console.log(pretty);
+    let pretty: string = responseText.replace(/\\|"url\":\|/g, "");
+    var matches = responseText.match(/\bhttps?:\/\/\S+/gi);
+    let linesbeauty: string[] = pretty.split('","');
+    console.log(matches);
   }
 
   function init(_event: Event): void {

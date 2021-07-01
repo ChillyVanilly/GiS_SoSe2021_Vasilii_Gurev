@@ -22,8 +22,10 @@ var Memory;
     async function connectdatabase() {
         let response = await fetch(url + "?" + "getOrder=yes");
         let responseText = await response.text();
-        let pretty = responseText.replace(/\\|\[|{|}|"|_id|savePicture|]/g, "");
-        console.log(pretty);
+        let pretty = responseText.replace(/\\|"url\":\|/g, "");
+        var matches = responseText.match(/\bhttps?:\/\/\S+/gi);
+        let linesbeauty = pretty.split('","');
+        console.log(matches);
     }
     function init(_event) {
         memoryContainer = document.querySelector(".memory-container");
