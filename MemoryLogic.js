@@ -2,8 +2,8 @@ var Memory;
 (function (Memory) {
     window.addEventListener("load", init);
     //width darf nicht ungerade sein. Man müsste dafür zusätzlichen code schreiben, der das überschüssige Element in eine neuee Zeile schreibt
-    let width = 10;
-    let height = 10;
+    let width = 4;
+    let height = 4;
     let url = "https://vasilii-server.herokuapp.com/";
     //anzahl der memorys generiert
     let maxTotalIndex = width * height;
@@ -21,7 +21,8 @@ var Memory;
     async function connectdatabase() {
         let response = await fetch(url + "?" + "getOrder=yes");
         let responseText = await response.text();
-        console.log(responseText);
+        let pretty = responseText.replace(/\|[|{|}|"|_id|savePicture|]/g, "");
+        console.log(pretty);
     }
     function init(_event) {
         memoryContainer = document.querySelector(".memory-container");

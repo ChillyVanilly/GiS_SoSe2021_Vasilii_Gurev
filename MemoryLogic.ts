@@ -3,8 +3,8 @@ namespace Memory {
 
 
   //width darf nicht ungerade sein. Man müsste dafür zusätzlichen code schreiben, der das überschüssige Element in eine neuee Zeile schreibt
-  let width: number = 10;
-  let height: number = 10;
+  let width: number = 4;
+  let height: number = 4;
   let url: string = "https://vasilii-server.herokuapp.com/";
 
   //anzahl der memorys generiert
@@ -29,7 +29,8 @@ namespace Memory {
   async function connectdatabase(): Promise<void> {
     let response: Response = await fetch(url + "?" + "getOrder=yes");
     let responseText: string = await response.text();
-    console.log(responseText);
+    let pretty: string = responseText.replace(/\|[|{|}|"|_id|savePicture|]/g, "");
+    console.log(pretty);
   }
 
   function init(_event: Event): void {
