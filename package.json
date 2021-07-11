@@ -18,7 +18,8 @@
   "dependencies": {
     "@types/mongodb": "^3.5.25",
     "@types/node": "^14.0.13",
-    "mongodb": "^3.5.9"
+    "mongodb": "^3.5.9",
+    "tslint": "^6.1.3"
   },
   "homepage": "https://chillyvanilly.github.io/GiS_SoSe2021_Vasilii_Gurev/index.html"
 }
