@@ -6,6 +6,7 @@ export namespace Datenbankanbindung {
     interface Order {
         [type: string]: string | string[] | undefined;
     }
+    let mongoClient: Mongo.MongoClient;
     let allOrders: string[] = [];
     let orders: Mongo.Collection;
 
@@ -30,7 +31,7 @@ export namespace Datenbankanbindung {
 
     async function connectToDatabase(_url: string): Promise<void> {
         let options: Mongo.MongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
-        let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
+        mongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
         orders = mongoClient.db("VasisDatabase").collection("Bilder");
         console.log("Database connection ", orders != undefined);
@@ -69,6 +70,11 @@ export namespace Datenbankanbindung {
                 _response.write(answer);
                 allOrders = [];
             }
+            else if (_request.url == "/?saveHighscore=yes") {
+                let pictures: Mongo.Collection<any> = mongoClient.db("VasisDatabase").collection("Highscores");
+                (await pictures).insertOne(url.query);
+
+            }
             else {
                 let jsonString: string = JSON.stringify((url.query), null, 2);
                 _response.write(jsonString);
@@ -78,7 +84,7 @@ export namespace Datenbankanbindung {
         _response.end();
     }
 
-    
+
 
     /* async function showData(_response: Http.ServerResponse): Promise<any> {
         console.log("ShowData called");

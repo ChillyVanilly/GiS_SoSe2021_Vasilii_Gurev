@@ -6,6 +6,7 @@ const Url = require("url");
 const Mongo = require("mongodb");
 var Datenbankanbindung;
 (function (Datenbankanbindung) {
+    let mongoClient;
     let allOrders = [];
     let orders;
     let port = process.env.PORT;
@@ -23,7 +24,7 @@ var Datenbankanbindung;
     }
     async function connectToDatabase(_url) {
         let options = { useNewUrlParser: true, useUnifiedTopology: true };
-        let mongoClient = new Mongo.MongoClient(_url, options);
+        mongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
         orders = mongoClient.db("VasisDatabase").collection("Bilder");
         console.log("Database connection ", orders != undefined);
@@ -58,6 +59,10 @@ var Datenbankanbindung;
                 let answer = jsonString.toString();
                 _response.write(answer);
                 allOrders = [];
+            }
+            else if (_request.url == "/?saveHighscore=yes") {
+                let pictures = mongoClient.db("VasisDatabase").collection("Highscores");
+                (await pictures).insertOne(url.query);
             }
             else {
                 let jsonString = JSON.stringify((url.query), null, 2);

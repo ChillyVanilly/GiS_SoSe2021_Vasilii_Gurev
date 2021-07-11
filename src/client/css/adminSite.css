@@ -1,0 +1,26 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  background-image: #2196f3;
+  padding: 1px;
+}
+.grid-item {
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 40px;
+
+  background-size: 64px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.grid-item input {
+  float: right;
+  clear: both;
+}
+/* https://icons.iconarchive.com/icons/tatice/just-bins/16/bin-black-full-icon.png */
+
+.grid-item .delete {
+  background-size: 16px;
+  background-repeat: no-repeat;
+  background-position: unset;
+}
