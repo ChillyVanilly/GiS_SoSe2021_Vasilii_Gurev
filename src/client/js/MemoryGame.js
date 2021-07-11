@@ -21,7 +21,7 @@ let counterInterval = setInterval(counterew, 1000);
 let width = 4;
 let height = 4;
 // let url: string = "https://vasilii-server.herokuapp.com/";
-const urlMemory = "http://127.0.0.1:5001/";
+const urlMemory = "https://vasilii-server.herokuapp.com/";
 //anzahl der memorys generiert
 let maxTotalIndex = width * height;
 //generieren des layouts
