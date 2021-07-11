@@ -1,6 +1,6 @@
 window.addEventListener("load", onLoadAdmin);
 
-const urlAdmin: string = "http://127.0.0.1:5001/";
+const urlAdmin: string = "https://vasilii-server.herokuapp.com/"
 
 async function onLoadAdmin() {
   let pictures = await getPictures();

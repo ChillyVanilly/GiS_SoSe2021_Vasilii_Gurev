@@ -1,4 +1,4 @@
-const url: string = "http://127.0.0.1:5001/";
+const url: string = "https://vasilii-server.herokuapp.com/";
 
 window.addEventListener("load", onStart);
 

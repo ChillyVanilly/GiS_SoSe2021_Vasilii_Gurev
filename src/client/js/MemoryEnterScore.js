@@ -1,6 +1,6 @@
 "use strict";
 window.addEventListener("load", onLoad);
-const urlEnterScore = "http://127.0.0.1:5001/";
+const urlEnterScore = "https://vasilii-server.herokuapp.com/";
 function onLoad() {
     let elem = document.getElementById("scoreValue");
     if (elem == null) {

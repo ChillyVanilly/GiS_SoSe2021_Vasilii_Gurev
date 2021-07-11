@@ -1,5 +1,5 @@
 "use strict";
-const url = "http://127.0.0.1:5001/";
+const url = "https://vasilii-server.herokuapp.com/";
 window.addEventListener("load", onStart);
 async function onStart() {
     // init highscore

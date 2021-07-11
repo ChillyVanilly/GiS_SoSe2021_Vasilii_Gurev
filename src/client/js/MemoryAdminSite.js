@@ -1,6 +1,6 @@
 "use strict";
 window.addEventListener("load", onLoadAdmin);
-const urlAdmin = "http://127.0.0.1:5001/";
+const urlAdmin = "https://vasilii-server.herokuapp.com/";
 async function onLoadAdmin() {
     let pictures = await getPictures();
     let container = document.getElementById("grid-container");
