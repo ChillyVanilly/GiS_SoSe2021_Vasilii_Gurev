@@ -1,6 +1,12 @@
 body {
   background-color: black;
 }
+.titletext {
+  color: white;
+  display: block;
+  margin: auto;
+  width: 300px;
+}
 
 .row {
   display: flex;
@@ -11,6 +17,28 @@ body {
   margin: 15px 2px;
   padding: 0px 20px;
   margin: 0;
+}
+.menuecontainer {
+  color: white;
+  display: block;
+  margin: auto;
+  width: 300px;
+  text-decoration: none;
+  margin-top: 30px;
+}
+a:link, a:visited {
+  background-color: white;
+  color: black;
+  border: 2px solid blue;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a:hover, a:active {
+  background-color: blue;
+  color: white;
 }
 
 .memory-element {
